@@ -1,0 +1,3 @@
+Modular containers that can fit together with other containers regardless of size. For example, 1x2x20mm containers will fit with 1x1x40mm containers or even 2x2x20mm containers.
+
+WARNING: If choosing a PLA material DO NOT store in an area that meets or exceeds 150 C (See material melting point) as the product may begin to deform.
