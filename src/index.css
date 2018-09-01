@@ -1,0 +1,82 @@
+ul#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul#navbar li {
+    float: left;
+}
+
+ul#navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul#navbar li a.clickable:hover {
+    background-color: #111;
+}
+
+ul.horizontalbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.horizontalbar-centered {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.horizontalbar li {
+    float: left;
+}
+
+ul.horizontalbar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    padding: 14px 8px;
+    text-decoration: none;
+}
+
+ul.horizontalbar-centered li a {
+    display: block;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    padding: 14px 8px;
+    text-decoration: none;
+}
+
+ul.horizontalbar li a.clickable {
+    text-decoration: underline;
+    text-decoration-color: #ddd
+}
+
+ul.horizontalbar-centered li a.clickable {
+    text-decoration: underline;
+    text-decoration-color: #ddd
+}
+
+ul.horizontalbar li a.clickable:hover {
+    background-color: #bbb;
+}
+
+ul.horizontalbar-centered li a.clickable:hover {
+    background-color: #bbb;
+}
+
+div.centered {
+    text-align: center
+}

@@ -34,11 +34,11 @@ export default class Games extends Component {
             return (
                 <div>
                     <h1>Games</h1>
-                    <ul>
+                    <div>
                         {this.state.games.map((game) =>
                             <Game key={game.id} game={game}/>
                         )}
-                    </ul>
+                    </div>
                 </div>
             );
         }
@@ -80,16 +80,16 @@ class Game extends Component {
             );
         } else {
             return (
-                <li>
-                    <a href={"games/"+this.state.key}>{this.state.name}</a>
-                    <br/>
-                    <a>platforms:</a>
-                    <ul>
+                <ul className="horizontalbar">
+                    <li><a className="clickable" href={'/games/'+this.state.key+'/'}>{this.state.name}</a></li>
+                    <li><a id="vertical-line">|</a></li>
+                    <li><a>platforms:</a></li>
+                    <ul className="horizontalbar">
                         {this.state.platforms.map((platform) =>
                             <Platform key={platform.id} platform={platform}/>
                         )}
                     </ul>
-                </li>
+                </ul>
             )
         }
     }

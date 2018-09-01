@@ -7,6 +7,7 @@ import GameFrame from './games/GameFrame'
 import Shop from './shop'
 import SignIn from './auth/SignIn'
 import SignOut from './auth/SignOut'
+import CreateUserDB from './auth/CreateUserDB'
 
 export default class App extends Component {
     constructor (props) {
@@ -21,6 +22,7 @@ export default class App extends Component {
             if (user) {
                 console.log("User is logged in");
                 console.log(user);
+                CreateUserDB(user);
                 this.setState({
                     currentUser: user
                 });
@@ -31,19 +33,18 @@ export default class App extends Component {
     render () {
         return (
             <div>
-                <nav>
-                    <Link to="/">Home</Link>
-                    <br/>
-                    <Link to="/games">Games</Link>
-                    <br/>
-                    <Link to="/shop">Shop</Link>
-                    {this.state.currentUser != null ? <div><Link to="/signOut">Sign Out</Link><br/><a>Signed In as: {this.state.currentUser["displayName"]}</a></div> : <Link to="/signIn">Sign In</Link>}
-                </nav>
+                <ul id="navbar">
+                    <li><Link className="clickable" to="/">Home</Link></li>
+                    <li><Link className="clickable" to="/games">Games</Link></li>
+                    <li><Link className="clickable" to="/shop">Shop</Link></li>
+                    <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
+                    <li>{this.state.currentUser != null ? <a>Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</a> : null}</li>
+                </ul>
                 <div>
                     <Route path="/games" exact component={Games}/>
-                    <Route path="/games/:id/:platform/:version" exact component={GameFrame}/>
-                    <Route path="/games/:id/:platform" exact component={GameFrame}/>
-                    <Route path="/games/:id" exact component={Game}/>
+                    <Route path="/games/:id/:platform/:version/" exact component={GameFrame}/>
+                    <Route path="/games/:id/:platform/" exact component={GameFrame}/>
+                    <Route path="/games/:id/" exact component={Game}/>
                     <Route path="/shop" exact component={Shop}/>
                     <Route path="/signIn" exact component={SignIn}/>
                     <Route path="/signOut" exact component={SignOut}/>

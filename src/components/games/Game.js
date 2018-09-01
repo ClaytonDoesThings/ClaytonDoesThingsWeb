@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Firestore } from '../../api'
+import { Firebase as firebase } from '../../api'
 
-const db = Firestore;
+const db = firebase.firestore();
+
 export default class Game extends Component {
     constructor (props) {
         super(props);
@@ -31,11 +32,83 @@ export default class Game extends Component {
             );
         } else {
             return (
-                <div>
-                    <h1>{this.state.name}</h1>
-                    <p>{this.state.desc}</p>
+                <div className="centered">
+                    <h1 style={{fontSize: '48px', margin: '4px'}}>{this.state.name}</h1>
+                    <h2 style={{fontSize: '32px', margin: '4px'}}>Authors</h2>
+                    <Authors id={this.state.id}/>
+                    <p style={{fontSize: '22px', margin: '4px'}}>{this.state.desc}</p>
                     <Downloads id={this.state.id}/>
                 </div>
+            );
+        }
+    }
+}
+
+class Authors extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            loading: true,
+            authors: []
+        }
+    }
+
+    componentDidMount () {
+        db.collection('games').doc(this.props.id).collection('authors').get().then((querySnapshot) => {
+            var results = [];
+            querySnapshot.forEach((doc) => {
+                results.push(doc.data()["UID"]);
+            })
+            this.setState({
+                loading: false,
+                authors: results
+            });
+        });
+    }
+
+    render () {
+        if (this.state.loading) {
+            return(
+                <a>Loading...</a>
+            );
+        } else {
+            return (
+                <ul className="horizontalbar-centered">
+                    {this.state.authors.map((author) =>
+                        <Author key={author} author={author}/>
+                    )}
+                </ul>
+            );
+        }
+    }
+}
+
+class Author extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            loading: true,
+            displayName: ""
+        }
+    }
+
+    componentDidMount () {
+        db.collection('users').doc(this.props.author).get().then((documentSnapshot) => {
+            this.setState({
+                loading: false,
+                displayName: documentSnapshot.data()["displayName"]
+            })
+        })
+    }
+
+    render () {
+        if (this.state.loading) {
+            return (
+                <a>Loading...</a>
+            );
+        } else {
+            return (
+                <li><a style={{fontSize: '24px', margin: '4px'}}>{this.state.displayName}</a></li>
             );
         }
     }
@@ -73,8 +146,8 @@ class Downloads extends Component {
         } else {
             return (
                 <div>
-                    <h2>Downloads</h2>
-                    <ul>
+                    <h2 style={{fontSize: '32px', margin: '4px'}}>Downloads</h2>
+                    <ul className="horizontalbar-centered">
                         {this.state.platforms.map((platform) =>
                             <Platform key={platform.id} game={this.state.id} platform={platform}/>
                         )}
@@ -117,8 +190,8 @@ class Platform extends Component {
         } else {
             return (
                 <li>
-                    <h2><a href={this.state.game+"/"+this.state.name} target="_blank">{this.state.name}</a></h2>
-                    <ul>
+                    <h2><a style={{fontSize: '28px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a></h2>
+                    <ul className="horizontalbar-centered">
                         {this.state.versions.map((version) =>
                             <Version key={version.id} game={this.state.game} platform={this.state.name} version={version}/>
                         )}
@@ -142,7 +215,7 @@ class Version extends Component {
     render () {
         return (
             <li>
-                <a href={this.state.game+"/"+this.state.platform+"/"+this.state.name} target="_blank">{this.state.name}</a>
+                <a style={{fontSize: '24px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.platform+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a>
             </li>
         )
     }
