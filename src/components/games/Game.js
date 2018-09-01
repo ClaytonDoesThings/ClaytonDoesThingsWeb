@@ -146,6 +146,7 @@ class Downloads extends Component {
         } else {
             return (
                 <div>
+                    <hr/>
                     <h2 style={{fontSize: '32px', margin: '4px'}}>Downloads</h2>
                     <ul className="horizontalbar-centered">
                         {this.state.platforms.map((platform) =>

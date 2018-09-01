@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Firebase as firebase } from '../api'
+import Home from './Home'
 import Games from './games/'
 import Game from './games/Game'
 import GameFrame from './games/GameFrame'
@@ -41,6 +42,7 @@ export default class App extends Component {
                     <li>{this.state.currentUser != null ? <a>Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</a> : null}</li>
                 </ul>
                 <div>
+                    <Route path="/" exact component={Home}/>
                     <Route path="/games" exact component={Games}/>
                     <Route path="/games/:id/:platform/:version/" exact component={GameFrame}/>
                     <Route path="/games/:id/:platform/" exact component={GameFrame}/>
