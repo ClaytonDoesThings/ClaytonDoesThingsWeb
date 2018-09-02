@@ -171,11 +171,15 @@ class Platform extends Component {
     }
 
     componentDidMount () {
-       this.props.platform.ref.collection('versions').get().then((querySnapshot) => {
-            var results = [];
+       this.props.platform.ref.collection('versions').orderBy("name").get().then((querySnapshot) => {
+            var _results = [];
             querySnapshot.forEach((doc) => {
-                results.push(doc);
+                _results.push(doc);
             });
+            var results = [];
+            for (var i = _results.length-1; i >= 0; i--) {
+                results.push(_results[i]);
+            }
             this.setState({
                 versions: results,
                 loading: false
