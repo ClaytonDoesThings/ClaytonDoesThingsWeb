@@ -4,7 +4,7 @@ export default class Home extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            currentUser: null
+            
         }
     }
 
@@ -14,7 +14,7 @@ export default class Home extends Component {
 
     render () {
         return (
-            <div class="centered">
+            <div className="centered">
                 <h1 style={{fontSize: "48px"}}>Home</h1>
                 <hr/>
                 <p style={{width: "60%", margin: "auto"}}>

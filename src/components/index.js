@@ -12,6 +12,7 @@ import Shop from './shop'
 import SignIn from './auth/SignIn'
 import SignOut from './auth/SignOut'
 import CreateUserDB from './auth/CreateUserDB'
+import Profile from './profile'
 
 export default class App extends Component {
     constructor (props) {
@@ -44,7 +45,7 @@ export default class App extends Component {
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
                     <li><a className="clickable" href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ">YouTube</a></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
-                    <li>{this.state.currentUser != null ? <a>Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</a> : null}</li>
+                    <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</Link> : null}</li>
                 </ul>
                 <div>
                     <Route path="/" exact component={Home}/>
@@ -59,6 +60,7 @@ export default class App extends Component {
                     {/* <Route path="/shop" exact component={Shop}/> */}
                     <Route path="/signIn" exact component={SignIn}/>
                     <Route path="/signOut" exact component={SignOut}/>
+                    <Route path="/profile" exact component={Profile}/>
                 </div>
             </div>
         )
