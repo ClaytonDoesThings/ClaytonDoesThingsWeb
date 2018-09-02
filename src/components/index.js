@@ -11,6 +11,7 @@ import Softwares from './software/'
 import Software from './software/Software'
 import SoftwareFrame from './software/SoftwareFrame'
 import Shop from './shop'
+import About from './About'
 import SignIn from './auth/SignIn'
 import SignOut from './auth/SignOut'
 import CreateUserDB from './auth/CreateUserDB'
@@ -45,9 +46,11 @@ export default class App extends Component {
                     <li><Link className="clickable" to="/games">Games</Link></li>
                     <li><Link className="clickable" to="/software">Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
+                    <li><Link className="clickable" to="/about">About</Link></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</Link> : null}</li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://github.com/ClaytonDoesThings/ClaytonDoesThingsWeb"><img alt="GitHub" src="https://image.flaticon.com/icons/svg/25/25231.svg" height="42" style={{filter: "invert(100%)"}}/></a></li>
+                    <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://www.patreon.com/ClaytonDoesThings"><img alt="Patreon" src="https://i1.wp.com/www.jcourseywillis.com/wp-content/uploads/2016/10/patreon_logo_black.png?fit=300%2C300&ssl=1" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ"><img alt="YouTube" src="https://image.flaticon.com/icons/png/512/25/25178.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
                 </ul>
@@ -62,6 +65,7 @@ export default class App extends Component {
                     <Route path="/software/:id/:platform/" exact component={SoftwareFrame}/>
                     <Route path="/software/:id/" exact component={Software}/>
                     {/* <Route path="/shop" exact component={Shop}/> */}
+                    <Route path="/about" exact component={About}/>
                     <Route path="/signIn" exact component={SignIn}/>
                     <Route path="/signOut" exact component={SignOut}/>
                     <Route path="/profile" exact component={Profile}/>
