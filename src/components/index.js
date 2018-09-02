@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
+import styles from '../index.css'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Firebase as firebase } from '../api'
 import Home from './Home'
@@ -43,7 +45,9 @@ export default class App extends Component {
                     <li><Link className="clickable" to="/games">Games</Link></li>
                     <li><Link className="clickable" to="/software">Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
-                    <li><a className="clickable" href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ">YouTube</a></li>
+                    <li><a className={classNames("clickable", "img")} href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ"><img alt="YouTube" src="https://image.flaticon.com/icons/png/512/25/25178.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
+                    <li><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
+                    <li><a className={classNames("clickable", "img")} href="https://github.com/ClaytonDoesThings/ClaytonDoesThingsWeb"><img alt="GitHub" src="https://image.flaticon.com/icons/svg/25/25231.svg" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</Link> : null}</li>
                 </ul>

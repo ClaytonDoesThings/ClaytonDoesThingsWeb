@@ -33,13 +33,18 @@ ul#navbar li {
     float: left;
 }
 
-ul#navbar li a {
+ul#navbar li a:not(.img) {
     display: block;
     color: white;
     text-align: center;
     font-size: 24px;
     padding: 7px 8px;
     text-decoration: none;
+}
+
+ul #navbar li a.img {
+    display: block;
+    padding: 0px;
 }
 
 ul#navbar li a.clickable:hover {
