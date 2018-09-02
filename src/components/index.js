@@ -45,11 +45,11 @@ export default class App extends Component {
                     <li><Link className="clickable" to="/games">Games</Link></li>
                     <li><Link className="clickable" to="/software">Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
-                    <li><a className={classNames("clickable", "img")} href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ"><img alt="YouTube" src="https://image.flaticon.com/icons/png/512/25/25178.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
-                    <li><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
-                    <li><a className={classNames("clickable", "img")} href="https://github.com/ClaytonDoesThings/ClaytonDoesThingsWeb"><img alt="GitHub" src="https://image.flaticon.com/icons/svg/25/25231.svg" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</Link> : null}</li>
+                    <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://github.com/ClaytonDoesThings/ClaytonDoesThingsWeb"><img alt="GitHub" src="https://image.flaticon.com/icons/svg/25/25231.svg" height="42" style={{filter: "invert(100%)"}}/></a></li>
+                    <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
+                    <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ"><img alt="YouTube" src="https://image.flaticon.com/icons/png/512/25/25178.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
                 </ul>
                 <div>
                     <Route path="/" exact component={Home}/>
