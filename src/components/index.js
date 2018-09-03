@@ -21,7 +21,8 @@ export default class App extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            currentUser: null
+            currentUser: null,
+            displayName: ""
         }
     }
 
@@ -31,8 +32,11 @@ export default class App extends Component {
                 console.log("User is logged in");
                 console.log(user);
                 CreateUserDB(user);
-                this.setState({
-                    currentUser: user
+                firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {
+                    this.setState({
+                        currentUser: user,
+                        displayName: doc.data().displayName
+                    });
                 });
             }
         });
@@ -48,7 +52,7 @@ export default class App extends Component {
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
                     <li><Link className="clickable" to="/about">About</Link></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
-                    <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.currentUser["displayName"] || this.state.currentUser["email"]}</Link> : null}</li>
+                    <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.displayName}</Link> : null}</li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://github.com/ClaytonDoesThings/ClaytonDoesThingsWeb"><img alt="GitHub" src="https://image.flaticon.com/icons/svg/25/25231.svg" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://www.patreon.com/ClaytonDoesThings"><img alt="Patreon" src="https://i1.wp.com/www.jcourseywillis.com/wp-content/uploads/2016/10/patreon_logo_black.png?fit=300%2C300&ssl=1" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
