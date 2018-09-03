@@ -36,9 +36,11 @@ export default class App extends Component {
                 console.log("User is logged in");
                 //console.log(user);
                 CreateUserDB(user);
-                firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {
+                this.setState({
+                    currentUser: user
+                });
+                firebase.firestore().collection("users").doc(user.uid).onSnapshot((doc) => {
                     this.setState({
-                        currentUser: user,
                         displayName: doc.data().displayName
                     });
                 });
