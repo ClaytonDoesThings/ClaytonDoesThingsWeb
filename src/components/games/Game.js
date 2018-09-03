@@ -17,6 +17,7 @@ export default class Game extends Component {
     componentDidMount () {
         db.collection("games").doc(this.state.id).get().then((documentSnapshot) => {
             const data = documentSnapshot.data();
+            document.title = data["name"];
             this.setState({
                 name: data["name"],
                 desc: data["desc"],

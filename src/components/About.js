@@ -9,7 +9,7 @@ export default class About extends Component {
     }
 
     componentDidMount () {
-
+        document.title = "Clayton Does Things - About";
     }
 
     render () {

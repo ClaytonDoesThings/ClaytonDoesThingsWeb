@@ -19,6 +19,9 @@ export default class GameFrame extends Component {
     componentDidMount () {
         console.log(this.state.platform);
         console.log(this.state.version);
+        db.collection('games').doc(this.state.id).get().then((doc) => {
+            document.title = doc.data()["name"] + " - " + this.state.platform + (this.state.version !== "-1" ? " - " + this.state.version : "");
+        });
         db.collection('games').doc(this.state.id).collection('platforms').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if (doc.data()["name"] === this.state.platform) {

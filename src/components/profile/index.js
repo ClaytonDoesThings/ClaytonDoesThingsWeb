@@ -15,6 +15,7 @@ export default class Profile extends Component {
     }
 
     componentDidMount () {
+        document.title = "Clayton Does Thing - Profile";
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {

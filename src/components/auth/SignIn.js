@@ -22,6 +22,7 @@ export default class SignIn extends Component {
 	}
 
 	componentDidMount () {
+		document.title = "Clayton Does Things - Sign In"
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				console.log("User is logged in");

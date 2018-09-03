@@ -17,6 +17,7 @@ export default class Software extends Component {
     componentDidMount () {
         db.collection("softwares").doc(this.state.id).get().then((documentSnapshot) => {
             const data = documentSnapshot.data();
+            document.title = data["name"];
             this.setState({
                 name: data["name"],
                 desc: data["desc"],
@@ -150,7 +151,7 @@ class Downloads extends Component {
                     <h2 style={{fontSize: '32px', margin: '4px'}}>Downloads</h2>
                     <ul className="horizontalbar-centered">
                         {this.state.platforms.map((platform) =>
-                            <Platform key={platform.id} game={this.state.id} platform={platform}/>
+                            <Platform key={platform.id} software={this.state.id} platform={platform}/>
                         )}
                     </ul>
                 </div>
@@ -164,7 +165,7 @@ class Platform extends Component {
         super(props);
         this.state = {
             loading: true,
-            game: this.props.game,
+            software: this.props.software,
             name: this.props.platform.data()["name"],
             versions: []
         }
@@ -191,10 +192,10 @@ class Platform extends Component {
         } else {
             return (
                 <li>
-                    <h2><a style={{fontSize: '28px', margin: '4px', padding: "0px 0px"}} href={'/software/'+this.state.game+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a></h2>
+                    <h2><a style={{fontSize: '28px', margin: '4px', padding: "0px 0px"}} href={'/software/'+this.state.software+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a></h2>
                     <ul className="horizontalbar-centered">
                         {this.state.versions.map((version) =>
-                            <Version key={version.id} game={this.state.game} platform={this.state.name} version={version}/>
+                            <Version key={version.id} software={this.state.game} platform={this.state.name} version={version}/>
                         )}
                     </ul>
                 </li>
@@ -207,7 +208,7 @@ class Version extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            game: this.props.game,
+            software: this.props.software,
             platform: this.props.platform,
             name: this.props.version.data()["name"]
         }
@@ -216,7 +217,7 @@ class Version extends Component {
     render () {
         return (
             <li>
-                <a style={{fontSize: '24px', margin: '4px', padding: "0px 0px"}} href={'/software/'+this.state.game+"/"+this.state.platform+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a>
+                <a style={{fontSize: '24px', margin: '4px', padding: "0px 0px"}} href={'/software/'+this.state.software+"/"+this.state.platform+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a>
             </li>
         )
     }

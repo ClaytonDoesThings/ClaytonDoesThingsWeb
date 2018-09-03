@@ -8,6 +8,10 @@ export default class Home extends Component {
         }
     }
 
+    componentDidMount() {
+        document.title = "Clayton Does Things - Home";
+    }
+
     render () {
         return (
             <div className="centered">

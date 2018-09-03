@@ -13,6 +13,7 @@ export default class Games extends Component {
     }
 
     componentDidMount () {
+        document.title = "Clayton Does Things - Games";
         db.collection('games').get().then((querySnapshot) => {
             var results = [];
             querySnapshot.forEach((doc) => {
