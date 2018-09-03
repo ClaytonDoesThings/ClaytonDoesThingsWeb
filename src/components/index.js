@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import styles from '../index.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Router, Route, Link } from 'react-router-dom';
 import { Firebase as firebase } from '../api'
 import Home from './Home'
 import Games from './games/'
@@ -16,6 +16,9 @@ import SignIn from './auth/SignIn'
 import SignOut from './auth/SignOut'
 import CreateUserDB from './auth/CreateUserDB'
 import Profile from './profile'
+import config from '../config'
+import ReactGA from 'react-ga';
+ReactGA.initialize(config.trackingId);
 
 export default class App extends Component {
     constructor (props) {
@@ -27,6 +30,7 @@ export default class App extends Component {
     }
 
     componentDidMount () {
+        ReactGA.pageview(window.location.pathname + window.location.search);
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 console.log("User is logged in");
@@ -42,9 +46,14 @@ export default class App extends Component {
         });
     }
 
+    componentDidUpdate () {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     render () {
         return (
             <div>
+                {this.props.history}
                 <ul id="navbar">
                     <li><Link className="clickable" to="/">Home</Link></li>
                     <li><Link className="clickable" to="/games">Games</Link></li>
