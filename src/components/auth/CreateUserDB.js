@@ -2,7 +2,6 @@ import { Firebase as firebase } from '../../api'
 const db = firebase.firestore();
 
 export default function CreateUserDB (user) {
-    console.log(user);
     const userRef = db.collection("users").doc(user["uid"]);
     userRef.get().then((documentSnapshot) => {
         var updateData = {

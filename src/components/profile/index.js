@@ -17,11 +17,12 @@ export default class Profile extends Component {
     componentDidMount () {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                console.log("User is logged in");
-                console.log(user);
-                this.setState({
-                    loading: false,
-                    currentUser: user
+                firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {
+                    this.setState({
+                        loading: false,
+                        displayName: doc.data().displayName,
+                        currentUser: user
+                    });
                 });
             } else {
                 this.setState({

@@ -34,7 +34,7 @@ export default class App extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 console.log("User is logged in");
-                console.log(user);
+                //console.log(user);
                 CreateUserDB(user);
                 firebase.firestore().collection("users").doc(user.uid).get().then((doc) => {
                     this.setState({
