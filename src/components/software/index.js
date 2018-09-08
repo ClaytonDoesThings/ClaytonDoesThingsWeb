@@ -34,7 +34,7 @@ export default class Games extends Component {
         } else {
             return (
                 <div>
-                    <h1>Games</h1>
+                    <h1>Software</h1>
                     <div>
                         {this.state.softwares.map((software) =>
                             <Software key={software.id} software={software}/>
