@@ -85,9 +85,9 @@ class Software extends Component {
                     <li><a className="clickable" href={'/software/'+this.state.key+'/'}>{this.state.name}</a></li>
                     <li><a id="vertical-line">|</a></li>
                     <li><a>platforms:</a></li>
-                    <ul className="horizontalbar">
+                    <ul>
                         {this.state.platforms.map((platform) =>
-                            <Platform key={platform.id} platform={platform}/>
+                            <Platform key={platform.id} software={this.state.key} platform={platform}/>
                         )}
                     </ul>
                 </ul>
@@ -107,7 +107,7 @@ class Platform extends Component {
     render () {
         return (
             <li>
-                <a>{this.state.name}</a>
+                <a className="clickable" href={'/software/'+this.props.software+'/'+this.state.name+'/'}>{this.state.name}</a>
             </li>
         )
     }
