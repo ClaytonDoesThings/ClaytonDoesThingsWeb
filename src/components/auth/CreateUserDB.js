@@ -7,11 +7,12 @@ export default function CreateUserDB (user) {
         var updateData = {
             lastSignIn: firebase.firestore.FieldValue.serverTimestamp()
         }
-        if (!documentSnapshot.exists) {
+        if (documentSnapshot.data().displayName === undefined) {
             updateData.displayName = user["displayName"] || user["email"];
-            userRef.set(updateData);
-        } else {
-            userRef.update(updateData);
         }
+        if (documentSnapshot.data().email === undefined) {
+            updateData.email = user["email"];
+        }
+        userRef.update(updateData);
     });
 }
