@@ -85,11 +85,9 @@ class Game extends Component {
                     <li><a className="clickable" href={'/games/'+this.state.key+'/'}>{this.state.name}</a></li>
                     <li><a id="vertical-line">|</a></li>
                     <li><a>platforms:</a></li>
-                    <ul className="horizontalbar">
-                        {this.state.platforms.map((platform) =>
-                            <Platform key={platform.id} platform={platform}/>
-                        )}
-                    </ul>
+                    {this.state.platforms.map((platform) =>
+                        <Platform key={platform.id} game={this.state.key} platform={platform}/>
+                    )}
                 </ul>
             )
         }
@@ -107,7 +105,7 @@ class Platform extends Component {
     render () {
         return (
             <li>
-                <a>{this.state.name}</a>
+                <a className="clickable" href={"/games/"+this.props.game+"/"+this.state.name+"/"}>{this.state.name}</a>
             </li>
         )
     }
