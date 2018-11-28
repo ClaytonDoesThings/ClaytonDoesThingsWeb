@@ -85,11 +85,9 @@ class Software extends Component {
                     <li><a className="clickable" href={'/software/'+this.state.key+'/'}>{this.state.name}</a></li>
                     <li><a id="vertical-line">|</a></li>
                     <li><a>platforms:</a></li>
-                    <ul>
-                        {this.state.platforms.map((platform) =>
-                            <Platform key={platform.id} software={this.state.key} platform={platform}/>
-                        )}
-                    </ul>
+                    {this.state.platforms.map((platform) =>
+                        <Platform key={platform.id} software={this.state.key} platform={platform}/>
+                    )}
                 </ul>
             )
         }
