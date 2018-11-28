@@ -55,7 +55,7 @@ export default class Profile extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else if (this.state.currentUser === null) {
             return (
@@ -69,9 +69,9 @@ export default class Profile extends Component {
                 <p style={{width: "60%", margin: "auto"}}>
                     
                 </p>
-                <a style={{color: "red"}}>{this.state.displayNameError}</a>
+                <span style={{color: "red"}}>{this.state.displayNameError}</span>
                 <br/>
-                <a>Set Display Name: </a><input type="text" value={this.state.displayName} onChange={this.handleDisplayName}/>
+                <span>Set Display Name: </span><input type="text" value={this.state.displayName} onChange={this.handleDisplayName}/>
                 <br/>
                 <button onClick={this.setDisplayName}>Set Display Name</button>
             </div>
@@ -94,7 +94,7 @@ class Redirect extends Component {
 
     render () {
         return (
-            <a>Redirecting...</a>
+            <span>Redirecting...</span>
         )
     }
 }

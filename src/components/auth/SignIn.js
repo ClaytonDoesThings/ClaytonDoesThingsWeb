@@ -127,13 +127,13 @@ export default class SignIn extends Component {
 					<h1>Sign In</h1>
 					<button onClick={this.signInWithGoogle}>Sign In With Google</button>
 					<br/>
-					<a>{this.state.authError}</a>
+					<span>{this.state.authError}</span>
 					{this.state.authError !== "" ? <br/> : null}
-					<a>email: </a><input type="email" value={this.state.email} onChange={this.handleEmail}/>
-					<a>{this.state.emailError ? " Email address not valid" : ""}</a>
+					<span>email: </span><input type="email" value={this.state.email} onChange={this.handleEmail}/>
+					<span>{this.state.emailError ? " Email address not valid" : ""}</span>
 					<br/>
-					<a>password: </a><input type="password" value={this.state.password} onChange={this.handlePassword}/>
-					<a>{this.state.passwordError ? " Password cannot be blank" : ""}</a>
+					<span>password: </span><input type="password" value={this.state.password} onChange={this.handlePassword}/>
+					<span>{this.state.passwordError ? " Password cannot be blank" : ""}</span>
 					<br/>
 					<button onClick={this.signInWithEmailAndPassword}>Sign In</button>
 					<button onClick={this.signUpWithEmailAndPassword}> Sign Up</button>
@@ -162,7 +162,7 @@ class Redirect extends Component {
 
 	render () {
 		return (
-			<a>Redirecting...</a>
+			<span>Redirecting...</span>
 		)
 	}
 }

@@ -29,7 +29,7 @@ export default class Games extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
@@ -77,14 +77,14 @@ class Software extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
                 <ul className="horizontalbar">
-                    <li><a className="clickable" href={'/software/'+this.state.key+'/'}>{this.state.name}</a></li>
-                    <li><a id="vertical-line">|</a></li>
-                    <li><a>platforms:</a></li>
+                    <li><a href={'/software/'+this.state.key+'/'}>{this.state.name}</a></li>
+                    <li><span id="vertical-line">|</span></li>
+                    <li><span>platforms:</span></li>
                     {this.state.platforms.map((platform) =>
                         <Platform key={platform.id} software={this.state.key} platform={platform}/>
                     )}
@@ -103,10 +103,13 @@ class Platform extends Component {
     }
 
     render () {
-        return (
+        return ([
             <li>
-                <a className="clickable" href={'/software/'+this.props.software+'/'+this.state.name+'/'}>{this.state.name}</a>
+                <a href={'/software/'+this.props.software+'/'+this.state.name+'/'} target="_blank" rel="noopener noreferrer">{this.state.name}</a>
+            </li>,
+            <li>
+                <span style={{opacity: 0}}>|</span>
             </li>
-        )
+        ])
     }
 }

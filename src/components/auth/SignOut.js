@@ -28,7 +28,7 @@ export default class SignIn extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Signing out...</a>
+                <span>Signing out...</span>
             );
         } else {
             return (
@@ -53,7 +53,7 @@ class Redirect extends Component {
 
     render () {
         return (
-            <a>Redirecting...</a>
+            <span>Redirecting...</span>
         )
     }
 }

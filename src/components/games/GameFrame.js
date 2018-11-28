@@ -47,7 +47,7 @@ export default class GameFrame extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
@@ -83,7 +83,7 @@ class Redirect extends Component {
 
     render () {
         return (
-            <a>Redirecting...</a>
+            <span>Redirecting...</span>
         )
     }
 }

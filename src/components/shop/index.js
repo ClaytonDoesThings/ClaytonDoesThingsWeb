@@ -25,7 +25,7 @@ export default class Games extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (

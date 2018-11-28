@@ -29,7 +29,7 @@ export default class Game extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
@@ -70,7 +70,7 @@ class Authors extends Component {
     render () {
         if (this.state.loading) {
             return(
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
@@ -105,11 +105,11 @@ class Author extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
-                <li><a style={{fontSize: '24px', margin: '4px'}}>{this.state.displayName}</a></li>
+                <li><span style={{fontSize: '24px', margin: '4px'}}>{this.state.displayName}</span></li>
             );
         }
     }
@@ -142,7 +142,7 @@ class Downloads extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
@@ -191,12 +191,12 @@ class Platform extends Component {
     render () {
         if (this.state.loading) {
             return (
-                <a>Loading...</a>
+                <span>Loading...</span>
             );
         } else {
             return (
                 <li>
-                    <h2><a style={{fontSize: '28px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a></h2>
+                    <h2><a style={{fontSize: '28px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.name+'/'} target="_blank" rel="noopener noreferrer">{this.state.name}</a></h2>
                     <ul className="horizontalbar-centered">
                         {this.state.versions.map((version) =>
                             <Version key={version.id} game={this.state.game} platform={this.state.name} version={version}/>
@@ -221,7 +221,7 @@ class Version extends Component {
     render () {
         return (
             <li>
-                <a style={{fontSize: '24px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.platform+"/"+this.state.name+'/'} target="_blank">{this.state.name}</a>
+                <a style={{fontSize: '24px', margin: '4px', padding: "0px 0px"}} href={'/games/'+this.state.game+"/"+this.state.platform+"/"+this.state.name+'/'} target="_blank" rel="noopener noreferrer">{this.state.name}</a>
             </li>
         )
     }
