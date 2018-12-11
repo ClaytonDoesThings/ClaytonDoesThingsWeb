@@ -11,6 +11,7 @@ import Softwares from './software/'
 import Software from './software/Software'
 import SoftwareFrame from './software/SoftwareFrame'
 import Shop from './shop'
+import Videos from './videos'
 import Blog from './blog'
 import About from './About'
 import SignIn from './auth/SignIn'
@@ -62,6 +63,7 @@ export default class App extends Component {
                     <li><Link className="clickable" to="/games">Games</Link></li>
                     <li><Link className="clickable" to="/software">Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
+                    <li><Link className="clickable" to="/videos">Videos</Link></li>
                     <li><Link className="clickable" to="/blog">Blog</Link></li>
                     <li><Link className="clickable" to="/about">About</Link></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
@@ -82,6 +84,7 @@ export default class App extends Component {
                     <Route path="/software/:id/:platform/" exact component={SoftwareFrame}/>
                     <Route path="/software/:id/" exact component={Software}/>
                     {/* <Route path="/shop" exact component={Shop}/> */}
+                    <Route path="/videos" exact component={Videos}/>
                     <Route path="/blog" exact component={Blog}/>
                     <Route path="/blog/:query" exact component={Blog}/>
                     <Route path="/about" exact component={About}/>

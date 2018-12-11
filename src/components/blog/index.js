@@ -3,7 +3,7 @@ import { Firestore } from '../../api'
 
 const db = Firestore;
 
-export default class Games extends Component {
+export default class Blog extends Component {
     constructor (props) {
         super(props);
         this.state = {
