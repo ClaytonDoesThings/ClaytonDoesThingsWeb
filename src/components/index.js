@@ -11,6 +11,7 @@ import Softwares from './software/'
 import Software from './software/Software'
 import SoftwareFrame from './software/SoftwareFrame'
 import Shop from './shop'
+import Blog from './blog'
 import About from './About'
 import SignIn from './auth/SignIn'
 import SignOut from './auth/SignOut'
@@ -61,6 +62,7 @@ export default class App extends Component {
                     <li><Link className="clickable" to="/games">Games</Link></li>
                     <li><Link className="clickable" to="/software">Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
+                    <li><Link className="clickable" to="/blog">Blog</Link></li>
                     <li><Link className="clickable" to="/about">About</Link></li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/signOut">Sign Out</Link> : <Link className="clickable" to="/signIn">Sign In</Link>}</li>
                     <li>{this.state.currentUser != null ? <Link className="clickable" to="/profile">Signed In as: {this.state.displayName}</Link> : null}</li>
@@ -80,6 +82,8 @@ export default class App extends Component {
                     <Route path="/software/:id/:platform/" exact component={SoftwareFrame}/>
                     <Route path="/software/:id/" exact component={Software}/>
                     {/* <Route path="/shop" exact component={Shop}/> */}
+                    <Route path="/blog" exact component={Blog}/>
+                    <Route path="/blog/:query" exact component={Blog}/>
                     <Route path="/about" exact component={About}/>
                     <Route path="/signIn" exact component={SignIn}/>
                     <Route path="/signOut" exact component={SignOut}/>
