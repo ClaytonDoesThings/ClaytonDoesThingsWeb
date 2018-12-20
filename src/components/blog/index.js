@@ -105,6 +105,8 @@ class Content extends Component {
             result = <span>{data.text}</span>;
         } else if (type === "link") {
             result = <a href={data.link}>{data.text}</a>;
+        } else if (type === "image") {
+            result = <img src={data.src} alt={data.alt}></img>
         }
         this.setState({
             content: result,
