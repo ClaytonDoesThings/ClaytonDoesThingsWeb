@@ -22,12 +22,18 @@ import config from '../config'
 import ReactGA from 'react-ga';
 ReactGA.initialize(config.trackingId);
 
+function checkPathForBlocks(blockedPages, path) {
+    return true;
+}
+
 export default class App extends Component {
     constructor (props) {
         super(props);
         this.state = {
             currentUser: null,
-            displayName: ""
+            displayName: "",
+            ip: "",
+            loading: true
         }
     }
 
@@ -47,6 +53,14 @@ export default class App extends Component {
                     });
                 });
             }
+        });
+        fetch('https://api.ipify.org?format=json').then((response) => {
+            return response.json();
+        }).then((data) => {
+            this.setState({
+                ip: data,
+                loading: false
+            })
         });
     }
 
@@ -73,24 +87,37 @@ export default class App extends Component {
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://discordapp.com/invite/nSGT8BJ"><img alt="Discord" src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
                     <li style={{float: "right"}}><a className={classNames("clickable", "img")} href="https://www.youtube.com/channel/UChXdVQ8mm8UQBir87KaRgTQ"><img alt="YouTube" src="https://image.flaticon.com/icons/png/512/25/25178.png" height="42" style={{filter: "invert(100%)"}}/></a></li>
                 </ul>
-                <div>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/games" exact component={Games}/>
-                    <Route path="/games/:id/:platform/:version/" exact component={GameFrame}/>
-                    <Route path="/games/:id/:platform/" exact component={GameFrame}/>
-                    <Route path="/games/:id/" exact component={Game}/>
-                    <Route path="/software" exact component={Softwares}/>
-                    <Route path="/software/:id/:platform/:version/" exact component={SoftwareFrame}/>
-                    <Route path="/software/:id/:platform/" exact component={SoftwareFrame}/>
-                    <Route path="/software/:id/" exact component={Software}/>
-                    {/* <Route path="/shop" exact component={Shop}/> */}
-                    <Route path="/videos" exact component={Videos}/>
-                    <Route path="/blog" exact component={Blog}/>
-                    <Route path="/blog/:query" exact component={Blog}/>
-                    <Route path="/about" exact component={About}/>
-                    <Route path="/signIn" exact component={SignIn}/>
-                    <Route path="/signOut" exact component={SignOut}/>
-                    <Route path="/profile" exact component={Profile}/>
+                {!this.state.loading ?
+                    (checkPathForBlocks(this.state.blockedPages, window.location.pathname) ? <div>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/games" exact component={Games}/>
+                        <Route path="/games/:id/:platform/:version/" exact component={GameFrame}/>
+                        <Route path="/games/:id/:platform/" exact component={GameFrame}/>
+                        <Route path="/games/:id/" exact component={Game}/>
+                        <Route path="/software" exact component={Softwares}/>
+                        <Route path="/software/:id/:platform/:version/" exact component={SoftwareFrame}/>
+                        <Route path="/software/:id/:platform/" exact component={SoftwareFrame}/>
+                        <Route path="/software/:id/" exact component={Software}/>
+                        {/* <Route path="/shop" exact component={Shop}/> */}
+                        <Route path="/videos" exact component={Videos}/>
+                        <Route path="/blog" exact component={Blog}/>
+                        <Route path="/blog/:query" exact component={Blog}/>
+                        <Route path="/about" exact component={About}/>
+                        <Route path="/signIn" exact component={SignIn}/>
+                        <Route path="/signOut" exact component={SignOut}/>
+                        <Route path="/profile" exact component={Profile}/>
+                    </div> : <div className="centered">
+                        <p>
+                            Sorry, but this page has been blocked by your network administrator. If you think this was done in error, please contact your network administrator for more clarification.
+                        </p>
+                    </div>) :
+                    <div>
+                        <span>Loading...</span>
+                    </div>
+                }
+                <div className="centered">
+                    <hr/>
+                    <p>Are you network admin and would like to control what pages users can view on the site? If so, please contact network@claytondoesthings.xyz with adequate proof of position as well as a valid IP address.</p>
                 </div>
             </div>
         )
