@@ -1,5 +1,9 @@
 import conf from '../config'
-var firebase = require('firebase')
+import firebase from 'firebase/app'
+import 'firebase/storage'
+import 'firebase/database'
+import 'firebase/firestore'
+import 'firebase/auth'
 var config = conf.firebase;
 firebase.initializeApp(config);
 export default firebase

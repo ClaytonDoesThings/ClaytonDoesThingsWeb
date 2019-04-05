@@ -17,7 +17,7 @@ export default class Software extends Component {
     componentDidMount () {
         db.collection("softwares").doc(this.state.id).get().then((documentSnapshot) => {
             const data = documentSnapshot.data();
-            document.title = data["name"];
+            document.title = "Clayton Does Things - " + data["name"];
             this.setState({
                 name: data["name"],
                 desc: data["desc"],
