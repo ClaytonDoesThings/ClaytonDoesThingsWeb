@@ -46,9 +46,12 @@ ul#navbar li a:not(.img) {
     text-decoration: none;
 }
 
-ul #navbar li a.img {
+ul#navbar li a {
     display: block;
-    padding: 0px;
+}
+
+ul#navbar .social-icon {
+    filter: invert(100%);
 }
 
 ul#navbar li a.clickable:hover {
