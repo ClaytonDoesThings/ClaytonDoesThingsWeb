@@ -116,7 +116,7 @@ export default class App extends Component {
                 <ul id="navbar">
                     <li><Link className="clickable" to="/">Home</Link></li>
                     <li><Link className="clickable" to="/games">Games</Link></li>
-                    <li><Link className="clickable" to="/software">Software</Link></li>
+                    <li><Link className="clickable" to="/software">Tools & Software</Link></li>
                     {/* <li><Link className="clickable" to="/shop">Shop</Link></li> */}
                     <li><Link className="clickable" to="/videos">Videos</Link></li>
                     <li><Link className="clickable" to="/blog">Blog</Link></li>
